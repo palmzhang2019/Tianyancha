@@ -1,0 +1,5 @@
+2020-05-30 00:32:24,784 - root - ERROR - 徐州市区块链协会(1062, "Duplicate entry '7_07_00:01:06-徐州市区块链协会' for key 'xid'")
+2020-05-30 00:32:30,289 - root - ERROR - 南京区块链产业应用协会(1062, "Duplicate entry '7_08_00:01:06-南京区块链产业应用协会' for key 'xid'")
+2020-05-30 00:32:35,836 - root - ERROR - 中金区块链科技（南京）有限公司(1062, "Duplicate entry '7_09_00:01:06-中金区块链科技（南京）有限公司' for key 'xid'")
+2020-05-30 07:41:11,262 - root - ERROR - 南京中网卫星通信股份有限公司(1406, "Data too long for column 'r_email' at row 1")
+2020-05-30 13:05:45,881 - root - ERROR - 江苏荣泽信息科技股份有限公司(1406, "Data too long for column 'r_email' at row 1")
