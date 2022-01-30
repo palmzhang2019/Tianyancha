@@ -2,6 +2,8 @@ import requests, json
 from bs4 import BeautifulSoup
 from pymysql import IntegrityError
 from settings import redisConnect, headers, mysqlConnect, logging
+from config import DB_TABLE
+
 
 while True:
     newObj = redisConnect.lpop('tianyan')
@@ -11,13 +13,13 @@ while True:
     detailhref = info.get('href')
     headers['Referer'] = info.get('url')
     try:
-        response = requests.get(detailhref,headers = headers)
+        response = requests.get(detailhref, headers=headers)
         if response.status_code != 200:
             response.encoding = 'utf-8'
             if response.status_code == 404:
                 print('ERROR:出验证码了，您该打开网页瞧瞧了{}'.format(detailhref))
                 print('后期这里会加打码识别功能，敬请期待^。^')
-                redisConnect.rpush("tianyan", json.dumps(info,ensure_ascii=True))
+                redisConnect.rpush("tianyan", json.dumps(info, ensure_ascii=True))
                 redisConnect.close()
                 break
         soup = BeautifulSoup(response.text, 'lxml')
@@ -58,7 +60,7 @@ while True:
     href = info.pop('href')
     url = info.pop('url')
 
-    table = 'company0529'
+    table = DB_TABLE
     keys = ','.join(info.keys())
     values = ','.join(['%s'] *len(info))
     sql = 'INSERT INTO {table}({keys}) VALUES({values})'.format(table=table, keys=keys, values=values)
